@@ -4,10 +4,7 @@ const nextConfig: NextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: 'https',
-				hostname: 'www.instagram.com',
-				port: '',
-				pathname: '/*'
+				hostname: 'images.unsplash.com'
 			}
 		]
 	}
