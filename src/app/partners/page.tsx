@@ -9,8 +9,8 @@ export default function Partners() {
 	));
 
 	return (
-		<div className='py-10 '>
-			<h2 className='max-w-7xl mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans'>
+		<div className='py-10'>
+			<h2 className='max-w-7xl mx-auto text-xl md:text-5xl mt-[-5rem] font-bold text-neutral-800 dark:text-neutral-200 font-sans'>
 				Our partners!
 			</h2>
 			<Carousel items={cards} />
@@ -67,12 +67,6 @@ const data = [
 		category: 'placeholder',
 		title: 'placeholder',
 		src: 'https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-		content: <Partner />
-	},
-	{
-		category: 'placeholder',
-		title: 'placeholder',
-		src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 		content: <Partner />
 	}
 ];

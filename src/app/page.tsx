@@ -23,9 +23,10 @@ export default function Home() {
 				</h1>
 			</div>
 			<div className='flex flex-col items-center text-center mt-20'>
-				<h2 className='text-4xl font-semibold text-black dark:text-white'>
-					Our Motive
-				</h2>
+				<TextGenerateEffect
+					className='text-4xl font-semibold text-black dark:text-white'
+					words={'Our Motive'}
+				/>
 				<p className='text-xl text-gray-700 dark:text-gray-300 w-2/3 '>
 					<TextGenerateEffect
 						words={
