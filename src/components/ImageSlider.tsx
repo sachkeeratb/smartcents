@@ -2,10 +2,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import image1 from '@/components/images/smartcents2025.png';
 import image2 from '@/components/images/wflc.png';
 import image3 from '@/components/images/teaching.png';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import image4 from '@/components/images/lockedin.jpg';
+import image5 from '@/components/images/discussion.png';
 
 // Interface for image data
 interface ImageData {
@@ -22,6 +25,12 @@ const images: ImageData[] = [
 	},
 	{
 		src: image3
+	},
+	{
+		src: image4
+	},
+	{
+		src: image5
 	}
 ];
 
@@ -81,11 +90,9 @@ export default function ImageSlider(): JSX.Element {
 						key={index}
 						src={image.src}
 						alt={`Slider Image ${index + 1}`}
-						layout='fill'
-						objectFit='cover'
 						className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
 							index === currentIndex ? 'opacity-100' : 'opacity-0'
-						} rounded-xl`}
+						} rounded-xl object-cover w-full h-full`}
 					/>
 				))}
 			</div>

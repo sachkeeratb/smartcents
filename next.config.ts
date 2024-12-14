@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
 			},
 			{
 				hostname: 'assets.aceternity.com'
+			},
+			{
+				hostname: 'pbs.twimg.com'
 			}
 		]
 	}

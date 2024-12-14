@@ -13,8 +13,17 @@ import { ModeToggle } from '@/components/darkmode-toggle';
 
 import logo from '@/components/images/smartcents.png';
 
+import { useEffect, useState } from 'react';
+
 export function NavBar() {
 	const pathname = usePathname();
+	const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+	const [isAboutUsHovered, setIsAboutUsHovered] = useState(false);
+	const [isAboutDropDownHovered, setIsAboutDropdownHovered] = useState(false);
+
+	useEffect(() => {
+		setIsAboutDropdownOpen(isAboutUsHovered || isAboutDropDownHovered);
+	}, [isAboutUsHovered, isAboutDropDownHovered]);
 
 	return (
 		<>
@@ -37,16 +46,52 @@ export function NavBar() {
 					>
 						Home
 					</TransitionLink>
-					<TransitionLink
-						href='/about'
-						className={`${
-							pathname === '/about'
-								? 'text-foreground'
-								: 'text-muted-foreground'
-						}  transition-transform duration-300 hover:text-foreground hover:scale-110`}
+					<div
+						className='relative'
+						onMouseEnter={() => {
+							setIsAboutUsHovered(true);
+							setIsAboutDropdownOpen(true);
+						}}
+						onMouseLeave={() => {
+							setTimeout(() => {
+								setIsAboutUsHovered(false);
+							}, 100);
+						}}
 					>
-						About Us
-					</TransitionLink>
+						<button
+							className={`${
+								pathname === '/about' ||
+								pathname === '/about/team' ||
+								pathname === '/about/mission'
+									? 'text-foreground'
+									: 'text-muted-foreground'
+							}  transition-transform duration-300 hover:text-foreground hover:scale-110`}
+						>
+							About Us
+						</button>
+						<div
+							className={`absolute left-0 mt-2 w-48 bg-white dark:bg-neutral-950 border rounded shadow-lg transition-opacity duration-300 transform ${
+								isAboutDropdownOpen
+									? 'opacity-100 scale-100'
+									: 'opacity-0 scale-100 pointer-events-none'
+							}`}
+							onMouseEnter={() => setIsAboutDropdownHovered(true)}
+							onMouseLeave={() => setIsAboutDropdownHovered(false)}
+						>
+							<TransitionLink
+								href='/about/team'
+								className='block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+							>
+								Our Team
+							</TransitionLink>
+							<TransitionLink
+								href='/about/mission'
+								className='block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+							>
+								Our Mission
+							</TransitionLink>
+						</div>
+					</div>
 					<TransitionLink
 						href='/resources'
 						className={`${
@@ -94,13 +139,6 @@ export function NavBar() {
 					</SheetTrigger>
 					<SheetContent side='left'>
 						<nav className='grid gap-6 text-lg font-medium'>
-							<Link
-								href='#'
-								className='flex items-center gap-2 text-lg font-semibold'
-							>
-								<Package2 className='h-6 w-6' />
-								<span className='sr-only'>$ami</span>
-							</Link>
 							<TransitionLink
 								href='/'
 								className={`${
@@ -109,16 +147,46 @@ export function NavBar() {
 							>
 								Home
 							</TransitionLink>
-							<TransitionLink
-								href='/about'
-								className={`${
-									pathname === '/about'
-										? 'text-foreground'
-										: 'text-muted-foreground'
-								}  transition-transform duration-300 hover:text-foreground hover:scale-110`}
-							>
-								About Us
-							</TransitionLink>
+							<div className='relative'>
+								<button
+									onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
+									className={`${
+										pathname === '/about'
+											? 'text-foreground'
+											: 'text-muted-foreground'
+									}  transition-transform duration-300 hover:text-foreground hover:scale-110`}
+								>
+									About Us
+								</button>
+								<div
+									className={`transition-transform duration-300 hover:text-foreground hover:scale-110 ${
+										isAboutDropdownOpen
+											? 'opacity-100 scale-100'
+											: 'opacity-0 scale-100 pointer-events-none'
+									}`}
+								>
+									<TransitionLink
+										href='/about/team'
+										className={`${
+											pathname === '/about'
+												? 'text-foreground'
+												: 'text-muted-foreground'
+										}  block px-4 py-2 text-sm transition-transform duration-300 hover:text-foreground hover:scale-110`}
+									>
+										Our Team
+									</TransitionLink>
+									<TransitionLink
+										href='/about/mission'
+										className={`${
+											pathname === '/about'
+												? 'text-foreground'
+												: 'text-muted-foreground'
+										}  block px-4 py-2 text-sm  transition-transform duration-300 hover:text-foreground hover:scale-110`}
+									>
+										Our Mission
+									</TransitionLink>
+								</div>
+							</div>
 							<TransitionLink
 								href='/resources'
 								className={`${

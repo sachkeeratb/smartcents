@@ -1,24 +1,17 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
+import React, { useState, useEffect } from 'react';
+import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
+import {
+	IconBoxAlignRightFilled,
+	IconClipboardCopy,
+	IconFileBroken,
+	IconSignature,
+	IconTableColumn
+} from '@tabler/icons-react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-
-import image from '@/components/images/smartcents.png';
-import { BackgroundBeams } from '@/components/ui/background-beams';
-
-const resources = [
-	{
-		title: 'Resource 1',
-		description: 'Description 1',
-		link: '#',
-		image: image.src
-	},
-	{
-		title: 'Resource 2',
-		description: 'Description 2',
-		link: '#',
-		image: image.src
-	}
-];
+import sachkeerat from '@/components/images/sachkeerat.png';
 
 export default function Resources() {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -35,7 +28,7 @@ export default function Resources() {
 		setIsSearching(true);
 		typingTimeout = setTimeout(() => {
 			setIsSearching(false);
-		}, 300);
+		}, 250);
 	};
 
 	useEffect(() => {
@@ -43,58 +36,372 @@ export default function Resources() {
 	}, [searchTerm]);
 
 	return (
-		<>
-			<BackgroundBeams />
-			<div className='rounded-lg p-4 max-w-[105rem] mx-auto'>
-				<div className='relative'>
-					<input
-						type='text'
-						placeholder='Search resources...'
-						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)}
-						className='w-full p-2 mb-4 text-lg border border-gray-600 rounded pl-10'
-					/>
-					<svg
-						className='absolute left-3 top-[0.8rem] w-5 h-5 text-gray-600'
-						xmlns='http://www.w3.org/2000/svg'
-						fill='none'
-						viewBox='0 0 24 24'
-						stroke='currentColor'
-					>
-						<path
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							strokeWidth={2}
-							d='M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z'
-						/>
-					</svg>
-				</div>
-				<div
-					className={`grid grid-cols-1 sm:grid-cols-4 gap-4 p-4 transition-all duration-300 ${
-						isSearching ? 'blur-sm' : ''
-					}`}
+		<div className='rounded-lg p-4 max-w-[105rem] mx-auto'>
+			<div className='relative'>
+				<input
+					type='text'
+					placeholder='Search resources...'
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+					className='w-full p-2 mb-4 text-lg border border-gray-600 rounded pl-10'
+				/>
+				<svg
+					className='absolute left-3 top-[0.8rem] w-5 h-5 text-gray-600'
+					xmlns='http://www.w3.org/2000/svg'
+					fill='none'
+					viewBox='0 0 24 24'
+					stroke='currentColor'
 				>
-					{filteredResources.map((resource, index) => (
-						<a
-							key={index}
-							className='resource-card border border-gray-600 rounded-lg p-4 text-center transition-transform duration-300 transform hover:scale-105 flex items-center bg-gray-100 dark:bg-neutral-950'
-							href={resource.link}
-						>
-							<Image
-								src={resource.image}
-								alt={resource.title}
-								width={256}
-								height={256}
-								className='w-16 h-16 mr-4 rounded'
-							/>
-							<div>
-								<h2 className='text-xl font-semibold'>{resource.title}</h2>
-								<p className='text-gray-700'>{resource.description}</p>
-							</div>
-						</a>
-					))}
-				</div>
+					<path
+						strokeLinecap='round'
+						strokeLinejoin='round'
+						strokeWidth={2}
+						d='M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z'
+					/>
+				</svg>
 			</div>
-		</>
+			<div
+				className={`transition-all duration-250 ${
+					isSearching ? 'blur-sm' : ''
+				}`}
+			>
+				<BentoGrid className='max-w-10xl mx-auto md:auto-rows-[20rem]'>
+					{filteredResources.map((resource, i) => (
+						<BentoGridItem
+							key={i}
+							title={resource.title}
+							description={resource.description}
+							header={resource.header}
+							className={cn('[&>p:text-lg]', resource.className)}
+							icon={resource.icon}
+						/>
+					))}
+				</BentoGrid>
+			</div>
+		</div>
 	);
 }
+
+const SkeletonOne = () => {
+	const variants = {
+		initial: {
+			x: 0
+		},
+		animate: {
+			x: 10,
+			rotate: 5,
+			transition: {
+				duration: 0.2
+			}
+		}
+	};
+	const variantsSecond = {
+		initial: {
+			x: 0
+		},
+		animate: {
+			x: -10,
+			rotate: -5,
+			transition: {
+				duration: 0.2
+			}
+		}
+	};
+
+	return (
+		<motion.div
+			initial='initial'
+			whileHover='animate'
+			className='flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2'
+		>
+			<motion.div
+				variants={variants}
+				className='flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-white dark:bg-black'
+			>
+				<div className='h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0' />
+				<div className='w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900' />
+			</motion.div>
+			<motion.div
+				variants={variantsSecond}
+				className='flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-white dark:bg-black'
+			>
+				<div className='w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900' />
+				<div className='h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0' />
+			</motion.div>
+			<motion.div
+				variants={variants}
+				className='flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-white dark:bg-black'
+			>
+				<div className='h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0' />
+				<div className='w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900' />
+			</motion.div>
+		</motion.div>
+	);
+};
+const SkeletonTwo = () => {
+	const variants = {
+		initial: {
+			width: 0
+		},
+		animate: {
+			width: '100%',
+			transition: {
+				duration: 0.2
+			}
+		},
+		hover: {
+			width: ['0%', '100%'],
+			transition: {
+				duration: 2
+			}
+		}
+	};
+	const arr = new Array(6).fill(0);
+	return (
+		<motion.div
+			initial='initial'
+			animate='animate'
+			whileHover='hover'
+			className='flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2'
+		>
+			{arr.map((_, i) => (
+				<motion.div
+					key={'skelenton-two' + i}
+					variants={variants}
+					style={{
+						maxWidth: Math.random() * (100 - 40) + 40 + '%'
+					}}
+					className='flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-neutral-100 dark:bg-black w-full h-4'
+				></motion.div>
+			))}
+		</motion.div>
+	);
+};
+const SkeletonThree = () => {
+	const variants = {
+		initial: {
+			backgroundPosition: '0 50%'
+		},
+		animate: {
+			backgroundPosition: ['0, 50%', '100% 50%', '0 50%']
+		}
+	};
+	return (
+		<motion.div
+			initial='initial'
+			animate='animate'
+			variants={variants}
+			transition={{
+				duration: 5,
+				repeat: Infinity,
+				repeatType: 'reverse'
+			}}
+			className='flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2'
+			style={{
+				background:
+					'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+				backgroundSize: '400% 400%'
+			}}
+		>
+			<motion.div className='h-full w-full rounded-lg'></motion.div>
+		</motion.div>
+	);
+};
+const SkeletonFour = () => {
+	const first = {
+		initial: {
+			x: 20,
+			rotate: -5
+		},
+		hover: {
+			x: 0,
+			rotate: 0
+		}
+	};
+	const second = {
+		initial: {
+			x: -20,
+			rotate: 5
+		},
+		hover: {
+			x: 0,
+			rotate: 0
+		}
+	};
+	return (
+		<motion.div
+			initial='initial'
+			animate='animate'
+			whileHover='hover'
+			className='flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2'
+		>
+			<motion.div
+				variants={first}
+				className='h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center'
+			>
+				<Image
+					src={sachkeerat}
+					alt='avatar'
+					height='100'
+					width='100'
+					className='rounded-full h-10 w-10'
+				/>
+				<p className='sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4'>
+					I don&apos;t need financial advice
+				</p>
+				<p className='border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4'>
+					Delusional
+				</p>
+			</motion.div>
+			<motion.div className='h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center'>
+				<Image
+					src={sachkeerat}
+					alt='avatar'
+					height='100'
+					width='100'
+					className='rounded-full h-10 w-10'
+				/>
+				<p className='sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4'>
+					I always attend SmartCents meetings!
+				</p>
+				<p className='border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4'>
+					Sensible
+				</p>
+			</motion.div>
+			<motion.div
+				variants={second}
+				className='h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center'
+			>
+				<Image
+					src={sachkeerat}
+					alt='avatar'
+					height='100'
+					width='100'
+					className='rounded-full h-10 w-10'
+				/>
+				<p className='sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4'>
+					I&apos;ll just thug it out.
+				</p>
+				<p className='border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4'>
+					Helpless
+				</p>
+			</motion.div>
+		</motion.div>
+	);
+};
+const SkeletonFive = () => {
+	const variants = {
+		initial: {
+			x: 0
+		},
+		animate: {
+			x: 10,
+			rotate: 5,
+			transition: {
+				duration: 0.2
+			}
+		}
+	};
+	const variantsSecond = {
+		initial: {
+			x: 0
+		},
+		animate: {
+			x: -10,
+			rotate: -5,
+			transition: {
+				duration: 0.2
+			}
+		}
+	};
+
+	return (
+		<motion.div
+			initial='initial'
+			whileHover='animate'
+			className='flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2'
+		>
+			<motion.div
+				variants={variants}
+				className='flex flex-row rounded-2xl border border-neutral-100 dark:border-white/[0.2] p-2  items-start space-x-2 bg-white dark:bg-black'
+			>
+				<Image
+					src={sachkeerat}
+					alt='avatar'
+					height='100'
+					width='100'
+					className='rounded-full h-10 w-10'
+				/>
+				<p className='text-xs text-neutral-500'>
+					There are a lot of cool places out there to learn about finance and
+					apply your knowledge in your life.
+				</p>
+			</motion.div>
+			<motion.div
+				variants={variantsSecond}
+				className='flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center justify-end space-x-2 w-3/4 ml-auto bg-white dark:bg-black'
+			>
+				<p className='text-xs text-neutral-500'>Join SmartCents.</p>
+				<div className='h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0' />
+			</motion.div>
+		</motion.div>
+	);
+};
+
+const resources = [
+	{
+		title: 'Investment Strategies',
+		description: (
+			<span className='text-sm'>
+				Learn about various investment strategies to grow your wealth.
+			</span>
+		),
+		header: <SkeletonOne />,
+		className: 'md:col-span-1',
+		icon: <IconClipboardCopy className='h-4 w-4 text-neutral-500' />
+	},
+	{
+		title: 'Budgeting Tips',
+		description: (
+			<span className='text-sm'>
+				Discover effective budgeting tips to manage your finances better.
+			</span>
+		),
+		header: <SkeletonTwo />,
+		className: 'md:col-span-1',
+		icon: <IconFileBroken className='h-4 w-4 text-neutral-500' />
+	},
+	{
+		title: 'Retirement Planning',
+		description: (
+			<span className='text-sm'>
+				Get insights on planning for a secure retirement.
+			</span>
+		),
+		header: <SkeletonThree />,
+		className: 'md:col-span-1',
+		icon: <IconSignature className='h-4 w-4 text-neutral-500' />
+	},
+	{
+		title: 'Tax Optimization',
+		description: (
+			<span className='text-sm'>
+				Learn how to optimize your taxes and save money.
+			</span>
+		),
+		header: <SkeletonFour />,
+		className: 'md:col-span-2',
+		icon: <IconTableColumn className='h-4 w-4 text-neutral-500' />
+	},
+	{
+		title: 'Debt Management',
+		description: (
+			<span className='text-sm'>
+				Find strategies to manage and reduce your debt effectively.
+			</span>
+		),
+		header: <SkeletonFive />,
+		className: 'md:col-span-1',
+		icon: <IconBoxAlignRightFilled className='h-4 w-4 text-neutral-500' />
+	}
+];
