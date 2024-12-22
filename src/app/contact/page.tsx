@@ -11,11 +11,11 @@ export default function Contact() {
 		<Vortex
 			backgroundColor='transparent'
 			rangeY={800}
-			particleCount={100}
+			particleCount={30}
 			baseHue={120}
 			className='px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md h-screen overflow-hidden'
 		>
-			<div className='flex flex-col md:flex-row items-center md:items-start text-center md:text-left mt-20'>
+			<div className='flex flex-col md:flex-row items-center md:items-start text-center md:text-left mt-20 w-full h-full'>
 				<div className='flex-1 mb-8 md:mb-0 md:mr-8'>
 					<h1 className='text-4xl font-semibold text-black dark:text-white mb-8 transition duration-300 hover:text-gray-500 dark:hover:text-gray-300'>
 						Contact Us
@@ -79,7 +79,7 @@ export default function Contact() {
 						</p>
 					</div>
 				</div>
-				<div className='flex-1 mt-[-20rem]'>
+				<div className='flex-1 mt-[-20rem] md:ml-[-30rem]'>
 					<ContainerScroll
 						titleComponent={
 							<h1 className='text-4xl font-semibold text-black dark:text-white'>

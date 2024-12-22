@@ -5,7 +5,9 @@ import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 
 import image from '@/components/images/smartcents.png';
+import manav from '@/components/images/manav.png';
 import vansh from '@/components/images/vansh.png';
+import kushi from '@/components/images/kushi.png';
 import sachkeerat from '@/components/images/sachkeerat.png';
 
 export default function About() {
@@ -30,7 +32,7 @@ export default function About() {
 						</CardItem>
 						<CardItem translateZ='100' className='w-full mt-4'>
 							<Image
-								src={image}
+								src={manav}
 								height='800'
 								width='800'
 								className='h-48 w-full object-cover rounded-xl group-hover/card:shadow-xl'
@@ -42,8 +44,12 @@ export default function About() {
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-[18rem] mt-2 justify-self-center text-center dark:text-neutral-300'
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et...
+							Hi, my name is Manav. I&apos;m a high school student who is
+							equipped with and has seen the importance of essential financial
+							skills. <br /> As an aspiring leader in HB FBLC and HB&apos;s
+							computer science clubs, I aim to leverage my mathematical and
+							financial expertise to create workshops and literature that are
+							both informative and fun for the community.
 						</CardItem>
 					</CardBody>
 				</CardContainer>
@@ -76,8 +82,11 @@ export default function About() {
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-[18rem] mt-2 justify-self-center text-center dark:text-neutral-300'
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et...
+							Hi, my name is Vansh. I&apos;m a high school student passionate
+							about equipping others with essential financial skills. As an avid
+							leader in HB&apos;s business scene and an experienced public
+							speaker, I strive to make financial literacy accessible and
+							engaging through SmartCents.
 						</CardItem>
 					</CardBody>
 				</CardContainer>
@@ -98,7 +107,7 @@ export default function About() {
 						</CardItem>
 						<CardItem translateZ='100' className='w-full mt-4'>
 							<Image
-								src={image}
+								src={kushi}
 								height='800'
 								width='800'
 								className='h-48 w-full object-cover rounded-xl group-hover/card:shadow-xl'
@@ -110,8 +119,11 @@ export default function About() {
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-[18rem] mt-2 justify-self-center text-center dark:text-neutral-300'
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et...
+							Hi, my name is Kushi Kallam and I&apos;m a Grade 11 student
+							currently attending Harold M. Brathwaite. I am interested in
+							finance and being able to teach others about it. Through
+							SmartCents, I hope to accomplish my goal and prepare youth for the
+							financial world.
 						</CardItem>
 					</CardBody>
 				</CardContainer>
@@ -146,8 +158,9 @@ export default function About() {
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-[18rem] mt-2 justify-self-center text-center dark:text-neutral-300'
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et...
+							Hi, my name is Sachkeerat. I am passionate about technology and
+							lead the IT efforts at SmartCents to ensure our platform runs
+							smoothly and efficiently.
 						</CardItem>
 					</CardBody>
 				</CardContainer>
@@ -180,8 +193,10 @@ export default function About() {
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-[18rem] mt-2 justify-self-center text-center dark:text-neutral-300'
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et...
+							Hi, my name is Mehar. I am dedicated to spreading financial
+							literacy and ensuring our outreach and marketing efforts are
+							impactful and far-reaching. Through SmartCents, I aim to connect
+							with the community and promote financial education.
 						</CardItem>
 					</CardBody>
 				</CardContainer>
