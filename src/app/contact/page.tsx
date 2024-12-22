@@ -9,9 +9,9 @@ import { BackgroundBeams } from '@/components/ui/background-beams';
 export default function Contact() {
 	return (
 		<>
-			<BackgroundBeams />
-			<div className='px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md h-screen overflow-hidden'>
-				<div className='flex flex-col md:flex-row items-center md:items-start text-center md:text-left mt-20 w-full h-full'>
+			<BackgroundBeams className='absolute inset-0 z-0' />
+			<div className='relative px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md h-screen overflow-hidden'>
+				<div className='relative z-10 flex flex-col md:flex-row items-center md:items-start text-center md:text-left mt-20 w-full h-full'>
 					<div className='flex-1 mb-8 md:mb-0 md:mr-8'>
 						<h1 className='text-4xl font-semibold text-black dark:text-white mb-8 transition duration-300 hover:text-gray-500 dark:hover:text-gray-300'>
 							Contact Us
