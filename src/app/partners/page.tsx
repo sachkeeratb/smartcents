@@ -3,24 +3,33 @@ import Image from 'next/image';
 import React from 'react';
 import { Carousel, Card } from '@/components/ui/apple-cards-carousel';
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
+import { isMobile } from '@/hooks/isMobile';
 
 import ramchandani from '@/components/images/ramchandani.png';
 import ramchandani_business_card from '@/components/images/ramchandani_business_card.png';
 
 export default function Partners() {
 	const cards = data.map((card, index) => (
-		<Card key={card.src} card={card} index={index} />
+		<div key={card.src} className={`${isMobile() ? 'my-5' : ''}`}>
+			<Card card={card} index={index} />
+		</div>
 	));
 
 	return (
-		<BackgroundBeamsWithCollision>
-			<div className='h-full'>
-				<h2 className='max-w-7xl mx-auto text-xl md:text-5xl mt-24 font-bold text-neutral-800 dark:text-neutral-200 font-sans'>
-					Our partners!
-				</h2>
-				<Carousel items={cards} />
-			</div>
-		</BackgroundBeamsWithCollision>
+		<div className={`${isMobile() ? 'overflow-y-scroll h-full' : ''}`}>
+			<BackgroundBeamsWithCollision>
+				<div className='h-full'>
+					<h2 className='max-w-7xl mx-auto text-xl md:text-5xl mt-24 font-bold text-neutral-800 dark:text-neutral-200 font-sans'>
+						Our partners!
+					</h2>
+					{isMobile() ? (
+						<div className='mt-10 flex-col'>{cards}</div>
+					) : (
+						<Carousel items={cards} />
+					)}
+				</div>
+			</BackgroundBeamsWithCollision>{' '}
+		</div>
 	);
 }
 

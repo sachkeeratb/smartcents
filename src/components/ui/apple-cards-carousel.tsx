@@ -182,7 +182,7 @@ export const Card = ({
 		<>
 			<AnimatePresence>
 				{open && (
-					<div className='fixed inset-0 h-screen z-50 overflow-auto'>
+					<div className='fixed inset-0 h-screen mt-10 z-50 overflow-auto'>
 						<motion.div
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
@@ -198,7 +198,7 @@ export const Card = ({
 							className='max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative'
 						>
 							<button
-								className='sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center'
+								className='sticky top-8 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center'
 								onClick={handleClose}
 							>
 								<IconX className='h-6 w-6 text-neutral-100 dark:text-neutral-900' />
@@ -223,10 +223,10 @@ export const Card = ({
 			<motion.button
 				layoutId={layout ? `card-${card.title}` : undefined}
 				onClick={handleOpen}
-				className='rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10'
+				className='rounded-3xl bg-gray-100 dark:bg-neutral-900 h-[28rem] w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10'
 			>
 				<div className='absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none' />
-				<div className='relative z-40 p-8'>
+				<div className='relative z-40 p-4'>
 					<motion.p
 						layoutId={layout ? `category-${card.category}` : undefined}
 						className='text-white text-sm md:text-base font-medium font-sans text-left'

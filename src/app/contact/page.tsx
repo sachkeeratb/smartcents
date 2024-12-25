@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import ImageSlider from '@/components/ImageSlider';
 import { BackgroundBeams } from '@/components/ui/background-beams';
+import { isMobile } from '@/hooks/isMobile';
 
 export default function Contact() {
 	return (
@@ -29,7 +30,7 @@ export default function Contact() {
 											'_blank'
 										)
 									}
-									className='bg-slate-500 dark:bg-slate-700 px-0.5 py-0.5 max-h-7 ml-1 transition duration-300 hover:bg-slate-700 dark:hover:bg-slate-500'
+									className='bg-slate-500 dark:bg-slate-700 text-white px-0.5 py-0.5 max-h-7 ml-1 transition duration-300 hover:bg-slate-700 dark:hover:bg-slate-500'
 								>
 									Google Form
 								</Button>
@@ -75,21 +76,25 @@ export default function Contact() {
 							</p>
 						</div>
 					</div>
-					<div className='flex-1 mt-[-20rem] md:ml-[-30rem]'>
-						<ContainerScroll
-							titleComponent={
-								<h1 className='text-4xl font-semibold text-black dark:text-white'>
-									Check out our Insta! <br />
-									<span className='text-3xl md:text-[6rem] font-bold mt-1 leading-none'>
-										What We Do
-									</span>
-								</h1>
-							}
-						>
-							<br />
-							<ImageSlider />
-						</ContainerScroll>
-					</div>
+					{isMobile() ? (
+						<></>
+					) : (
+						<div className='flex-1 mt-[-20rem] md:ml-[-30rem]'>
+							<ContainerScroll
+								titleComponent={
+									<h1 className='text-4xl font-semibold text-black dark:text-white'>
+										Check out our Insta! <br />
+										<span className='text-3xl md:text-[6rem] font-bold mt-1 leading-none'>
+											What We Do
+										</span>
+									</h1>
+								}
+							>
+								<br />
+								<ImageSlider />
+							</ContainerScroll>
+						</div>
+					)}
 				</div>
 			</div>
 		</>

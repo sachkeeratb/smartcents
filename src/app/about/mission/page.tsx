@@ -1,11 +1,15 @@
 'use client';
-import React from 'react';
 import Image from 'next/image';
 import { TracingBeam } from '@/components/ui/tracing-beam';
+import { isMobile } from '@/hooks/isMobile';
 
 export default function Mission() {
 	return (
-		<TracingBeam className='max-w-4xl '>
+		<TracingBeam
+			className={`max-w-4xl p-10 ${
+				isMobile() ? 'min-h-screen' : 'max-h-screen'
+			}`}
+		>
 			<div className='max-w-full mx-auto antialiased pt-4 relative'>
 				{content.map((item, index) => (
 					<div key={`content-${index}`} className='mb-10'>

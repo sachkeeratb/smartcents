@@ -1,26 +1,45 @@
+'use client';
+
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import { FlipWords } from '@/components/ui/flip-words';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 import { Cover } from '@/components/ui/cover';
+import { isMobile } from '@/hooks/isMobile';
 
 export default function Home() {
 	return (
 		<>
 			<BackgroundBeams />
-			<div className='flex flex-col items-center text-center mt-20'>
-				<h1 className='text-4xl font-semibold text-black dark:text-white'>
-					<div className='flex ml-24 justify-left items-center flex-row row-span-2'>
-						<span className='mr-2 text-left flex-shrink-0'>Financial</span>
-						<Cover className='inline-block text-left'>
-							<FlipWords words={['Literacy', 'Prosperity', 'Knowledge']} />
-						</Cover>
-					</div>
-					<span className='text-4xl md:text-[6rem] font-bold mt-1 leading-none'>
-						SmartCents
-					</span>
-				</h1>
-			</div>
+			{isMobile() ? (
+				<div className='flex flex-col items-center text-center mt-20 mb-[-5rem]'>
+					<h1 className='text-3xl font-semibold text-black dark:text-white'>
+						<div className='flex ml-auto mr-auto justify-left items-center flex-row row-span-2'>
+							<span className='mr-2 text-left flex-shrink-0'>Financial</span>
+							<Cover className='inline-block text-left'>
+								<FlipWords words={['Literacy', 'Prosperity', 'Knowledge']} />
+							</Cover>
+						</div>
+						<span className='text-4xl md:text-[6rem] font-bold mt-1 leading-none'>
+							SmartCents
+						</span>
+					</h1>
+				</div>
+			) : (
+				<div className='flex flex-col items-center text-center mt-20'>
+					<h1 className='text-4xl font-semibold text-black dark:text-white'>
+						<div className='flex ml-24 justify-left items-center flex-row row-span-2'>
+							<span className='mr-2 text-left flex-shrink-0'>Financial</span>
+							<Cover className='inline-block text-left'>
+								<FlipWords words={['Literacy', 'Prosperity', 'Knowledge']} />
+							</Cover>
+						</div>
+						<span className='text-4xl md:text-[6rem] font-bold mt-1 leading-none'>
+							SmartCents
+						</span>
+					</h1>
+				</div>
+			)}
 			<div className='flex flex-col items-center text-center mt-20'>
 				<TextGenerateEffect
 					className='text-4xl font-semibold text-black dark:text-white'
