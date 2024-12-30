@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import ImageSlider from '@/components/ImageSlider';
 import { BackgroundBeams } from '@/components/ui/background-beams';
-import { isMobile } from '@/hooks/isMobile';
+import { isMobile, isIPad } from '@/hooks/isMobile';
 
 export default function Contact() {
 	return (
@@ -76,7 +76,7 @@ export default function Contact() {
 							</p>
 						</div>
 					</div>
-					{isMobile() ? (
+					{isMobile() || isIPad() ? (
 						<></>
 					) : (
 						<div className='flex-1 mt-[-20rem] md:ml-[-30rem]'>

@@ -1,19 +1,17 @@
 'use client';
 
-import { Menu, Package2 } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-
 import TransitionLink from '@/components/TransitionLink';
 import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet';
 import { ModeToggle } from '@/components/darkmode-toggle';
+import { isMobile, isIPad } from '@/hooks/isMobile';
 
 import logo from '@/components/images/smartcents.png';
-
-import { useEffect, useState } from 'react';
 
 export function NavBar() {
 	const pathname = usePathname();
@@ -22,12 +20,14 @@ export function NavBar() {
 	const [isAboutDropDownHovered, setIsAboutDropdownHovered] = useState(false);
 
 	useEffect(() => {
-		setIsAboutDropdownOpen(isAboutUsHovered || isAboutDropDownHovered);
+		if (isMobile()) setIsAboutDropdownOpen(true);
+		else if (!isIPad())
+			setIsAboutDropdownOpen(isAboutUsHovered || isAboutDropDownHovered);
 	}, [isAboutUsHovered, isAboutDropDownHovered]);
 
 	return (
 		<>
-			<header className='sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-10'>
+			<header className='sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-[1000]'>
 				<Link href='/' className='flex items-center'>
 					<Image
 						src={logo}
@@ -56,6 +56,9 @@ export function NavBar() {
 							setTimeout(() => {
 								setIsAboutUsHovered(false);
 							}, 100);
+						}}
+						onClick={() => {
+							if (isIPad()) setIsAboutDropdownOpen(!isAboutDropdownOpen);
 						}}
 					>
 						<button

@@ -3,6 +3,13 @@ import Image from 'next/image';
 import { TracingBeam } from '@/components/ui/tracing-beam';
 import { isMobile } from '@/hooks/isMobile';
 
+import mission1 from '@/components/images/mission1.png';
+import mission2 from '@/components/images/mission2.png';
+import mission3 from '@/components/images/mission3.png';
+import mission4 from '@/components/images/mission4.png';
+import mission5 from '@/components/images/mission5.png';
+import mission6 from '@/components/images/mission6.png';
+
 export default function Mission() {
 	return (
 		<TracingBeam
@@ -20,8 +27,8 @@ export default function Mission() {
 								<Image
 									src={item.image}
 									alt='blog thumbnail'
-									height='1000'
-									width='1000'
+									height='720'
+									width='1280'
 									className='rounded-lg mb-10 object-cover h-1/2'
 								/>
 							)}
@@ -49,8 +56,7 @@ const content = [
 				school clubs to help their peers develop financial literacy skills.
 			</p>
 		),
-		image:
-			'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		image: mission1.src
 	},
 	{
 		title: 'Importance of Financial Literacy for High School Students',
@@ -65,8 +71,7 @@ const content = [
 				effectively, make informed decisions, and set financial goals.
 			</p>
 		),
-		image:
-			'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		image: mission2.src
 	},
 	{
 		title: 'Why Financial Literacy is Critical',
@@ -92,8 +97,7 @@ const content = [
 				</p>
 			</div>
 		),
-		image:
-			'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		image: mission3.src
 	},
 	{
 		title: 'Key Areas of Financial Literacy to Focus On with Statistics',
@@ -180,8 +184,7 @@ const content = [
 				</p>
 			</div>
 		),
-		image:
-			'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		image: mission4.src
 	},
 	{
 		title: 'Our Plan',
@@ -310,8 +313,7 @@ const content = [
 				</p>
 			</div>
 		),
-		image:
-			'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		image: mission5.src
 	},
 	{
 		title: 'Conclusion',
@@ -329,7 +331,6 @@ const content = [
 				decisions and set the stage for long-term financial success.
 			</p>
 		),
-		image:
-			'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		image: mission6.src
 	}
 ];
