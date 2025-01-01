@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { NavBar } from '@/components/NavBar';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = localFont({
 	src: './fonts/GeistVF.woff',
@@ -17,7 +19,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
 	title: 'SmartCents',
-	description: 'Created by Sachkeerat'
+	description:
+		'A nonprofit initiative, tackling a huge issue today - the lack of financial literacy among students.'
 };
 
 export default function RootLayout({
@@ -39,6 +42,8 @@ export default function RootLayout({
 				>
 					<NavBar />
 					{children}
+					<Analytics />
+					<SpeedInsights />
 				</ThemeProvider>
 			</body>
 		</html>
