@@ -29,9 +29,11 @@ export default function Resources() {
 	const resourcesPerPage = deviceType === 'ipad' ? 4 : 6;
 
 	useEffect(() => {
-		instance.get('/api/resources/total').then((res) => {
-			setTotalPages(Math.ceil(res.data.total / resourcesPerPage) || 1);
-		});
+		instance
+			.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/resources/total`)
+			.then((res) => {
+				setTotalPages(Math.ceil(res.data.total / resourcesPerPage) || 1);
+			});
 	}, []);
 
 	useEffect(() => {
@@ -39,7 +41,7 @@ export default function Resources() {
 		setCurrentPage(1);
 		handleTyping();
 		instance
-			.get(`/api/resources`, {
+			.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/resources`, {
 				params: {
 					title: searchTerm,
 					page: currentPage,
@@ -53,7 +55,9 @@ export default function Resources() {
 					)
 				);
 				instance
-					.get(`/api/resources/total/title?title=${searchTerm}`)
+					.get(
+						`${process.env.NEXT_PUBLIC_SERVER_URL}/api/resources/total/title?title=${searchTerm}`
+					)
 					.then((res) => {
 						setTotalPages(Math.ceil(res.data.total / resourcesPerPage) || 1);
 						setLoading(false);
@@ -65,7 +69,7 @@ export default function Resources() {
 		setLoading(true);
 		setIsPageChanging(true);
 		instance
-			.get(`/api/resources`, {
+			.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/resources`, {
 				params: {
 					title: searchTerm,
 					page: currentPage,
