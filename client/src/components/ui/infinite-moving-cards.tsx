@@ -87,7 +87,7 @@ export const InfiniteMovingCards = ({
 			>
 				{items.map((item, idx) => (
 					<li
-						className='w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-emerald-950 px-8 py-6 md:w-[450px]'
+						className='w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-emerald-950 px-8 py-6 md:w-[450px] flex flex-col justify-between'
 						style={{
 							background:
 								'linear-gradient(180deg, var(--emerald-800), var(--emerald-900)'
@@ -102,16 +102,18 @@ export const InfiniteMovingCards = ({
 							<span className=' relative z-20 text-sm leading-[1.6] text-gray-100 font-normal'>
 								{item.quote}
 							</span>
-							<div className='relative z-20 mt-6 flex flex-row items-center'>
-								<span className='flex flex-col gap-1'>
-									<span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
-										{item.name}
-									</span>
-									<span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
-										{item.title}
-									</span>
+						</blockquote>
+						<blockquote>
+						<div className='relative z-20 mt-6 flex flex-row items-center'>
+							<span className='flex flex-col gap-1'>
+								<span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
+									{item.name}
 								</span>
-							</div>
+								<span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
+									{item.title}
+								</span>
+							</span>
+						</div>
 						</blockquote>
 					</li>
 				))}
