@@ -79,32 +79,32 @@ export default function Home() {
 const testimonials = [
 	{
 		quote:
-			'SmartCents has completely transformed the way I manage my finances. The tools and resources provided are invaluable.',
-		name: 'John Doe',
-		title: 'Satisfied Client'
+			'The FLC was both challenging and incredibly rewarding, greatly enhancing my financial knowledge, sharpening my critical thinking, and improving my decision-making abilities.',
+		name: 'FLC Winner',
+		title: 'Waterloo FLC'
 	},
 	{
 		quote:
-			'Thanks to SmartCents, I now have a clear understanding of how to save and invest my money for the future.',
-		name: 'Jane Smith',
-		title: 'Happy User'
+			'I really liked this experience because it taught me many things about different cards. This taught me about different ways to invest.',
+		name: 'PDSB Student',
+		title: 'DISCOVER Workshop'
 	},
 	{
 		quote:
-			'The financial literacy programs offered by SmartCents are top-notch. I feel more confident about my financial decisions.',
-		name: 'Emily Johnson',
-		title: 'Grateful Client'
+			'This workshop was actually fun to listen to. I learned things that I can use in my daily life. It was also really engaging because the presenters were actually talking to us and it felt like I could relate to this. I also loved the engaging aspect of the presentation of when they asked us questions and played blooket!',
+		name: 'Anonymous HB Student',
+		title: 'DISCOVER Workshop'
 	},
 	{
 		quote:
-			'SmartCents has been a game-changer for me. The insights and advice have helped me achieve my financial goals.',
-		name: 'Michael Brown',
-		title: 'Thrilled User'
+			'The workshop was interesting and it really helped solidify my base on personal finances: the interactive components were very engaging too!',
+		name: 'Anonymous Student',
+		title: 'DISCOVER Workshop'
 	},
 	{
 		quote:
-			'I highly recommend SmartCents to anyone looking to improve their financial knowledge and skills.',
-		name: 'Sarah Davis',
-		title: 'Pleased Client'
+			'I will say that the presentation was very informative and very helpful for students who are trying to save money and make smarter financial choices. This presentation is important for us because us as students mostly rely on our parents for money so we don\'t really know when to stop, but hearing this presentation it helps us prepare for the future.',
+		name: 'An HB Student',
+		title: 'DISCOVER Workshop'
 	}
 ];
