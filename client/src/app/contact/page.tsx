@@ -11,8 +11,14 @@ export default function Contact() {
 	const deviceType = useDeviceType();
 	return (
 		<>
-			<BackgroundBeams className='absolute inset-0 z-0' />
-			<div className='relative px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md h-screen overflow-hidden'>
+			{deviceType === 'desktop' ? (
+				<BackgroundBeams className='absolute inset-0 z-0' />
+			) : null}
+			<div
+				className={`${
+					deviceType !== 'mobile' ? 'fixed pt-10' : 'relative'
+				} px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md h-screen`}
+			>
 				<div className='relative z-10 flex flex-col md:flex-row items-center md:items-start text-center md:text-left mt-20 w-full h-full'>
 					<div className='flex-1 mb-8 md:mb-0 md:mr-8'>
 						<h1 className='text-4xl font-semibold text-black dark:text-white mb-8 transition duration-300 hover:text-gray-500 dark:hover:text-gray-300'>
@@ -27,7 +33,7 @@ export default function Contact() {
 								<Button
 									onClick={() =>
 										window.open(
-											'https://forms.gle/your-google-form-link',
+											'https://docs.google.com/forms/d/e/1FAIpQLSe1db1-G2s11C8IIkwR5yCtmNV6sXKLEK0QWEDs_XVv0j3vVw/viewform',
 											'_blank'
 										)
 									}
@@ -77,10 +83,10 @@ export default function Contact() {
 							</p>
 						</div>
 					</div>
-					{deviceType === 'mobile' || deviceType === 'ipad' ? (
+					{deviceType !== 'desktop' ? (
 						<></>
 					) : (
-						<div className='flex-1 mt-[-20rem] md:ml-[-30rem]'>
+						<div className='flex-1 mt-[-20rem] md:ml-[-30rem] '>
 							<ContainerScroll
 								titleComponent={
 									<h1 className='text-4xl font-semibold text-black dark:text-white'>

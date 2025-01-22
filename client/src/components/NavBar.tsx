@@ -169,9 +169,10 @@ export function NavBar() {
 							</TransitionLink>
 							<div className='relative'>
 								<button
-									onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
 									className={`${
-										pathname === '/about'
+										pathname === '/about' ||
+										pathname === '/about/team' ||
+										pathname === '/about/mission'
 											? 'text-foreground'
 											: 'text-muted-foreground'
 									}  transition-transform duration-300 hover:text-foreground hover:scale-110`}
@@ -179,16 +180,14 @@ export function NavBar() {
 									About Us
 								</button>
 								<div
-									className={`transition-transform duration-300 hover:text-foreground hover:scale-110 ${
-										isAboutDropdownOpen
-											? 'opacity-100 scale-100'
-											: 'opacity-0 scale-100 pointer-events-none'
-									}`}
+									className={
+										'transition-transform duration-300 hover:text-foreground hover:scale-110 opacity-100 scale-100'
+									}
 								>
 									<TransitionLink
 										href='/about/team'
 										className={`${
-											pathname === '/about'
+											pathname === '/about/team'
 												? 'text-foreground'
 												: 'text-muted-foreground'
 										}  block px-4 py-2 text-sm transition-transform duration-300 hover:text-foreground hover:scale-110`}
@@ -198,10 +197,10 @@ export function NavBar() {
 									<TransitionLink
 										href='/about/mission'
 										className={`${
-											pathname === '/about'
+											pathname === '/about/mission'
 												? 'text-foreground'
 												: 'text-muted-foreground'
-										}  block px-4 py-2 text-sm  transition-transform duration-300 hover:text-foreground hover:scale-110`}
+										}  block px-4 py-2 text-sm transition-transform duration-300 hover:text-foreground hover:scale-110`}
 									>
 										Our Mission
 									</TransitionLink>

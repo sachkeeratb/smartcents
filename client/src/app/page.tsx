@@ -11,7 +11,7 @@ export default function Home() {
 	const deviceType = useDeviceType();
 	return (
 		<>
-			<BackgroundBeams />
+			{deviceType === 'desktop' ? <BackgroundBeams /> : null}
 			{deviceType === 'mobile' ? (
 				<div className='flex flex-col items-center text-center mt-20 mb-[-5rem]'>
 					<h1 className='text-3xl font-semibold text-black dark:text-white'>
@@ -103,7 +103,7 @@ const testimonials = [
 	},
 	{
 		quote:
-			'I will say that the presentation was very informative and very helpful for students who are trying to save money and make smarter financial choices. This presentation is important for us because us as students mostly rely on our parents for money so we don\'t really know when to stop, but hearing this presentation it helps us prepare for the future.',
+			"I will say that the presentation was very informative and very helpful for students who are trying to save money and make smarter financial choices. This presentation is important for us because us as students mostly rely on our parents for money so we don't really know when to stop, but hearing this presentation it helps us prepare for the future.",
 		name: 'An HB Student',
 		title: 'DISCOVER Workshop'
 	}
