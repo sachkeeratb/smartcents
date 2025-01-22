@@ -5,11 +5,11 @@ import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import { useDeviceType } from '@/hooks/useDeviceType';
 
-import image from '@/components/images/smartcents.png';
 import manav from '@/components/images/manav.png';
 import vansh from '@/components/images/vansh.png';
 import kushi from '@/components/images/kushi.png';
 import sachkeerat from '@/components/images/sachkeerat.png';
+import mehar from '@/components/images/mehar.png';
 
 const Founders = () => {
 	return (
@@ -184,7 +184,7 @@ const NonFounders = () => {
 					</CardItem>
 					<CardItem translateZ='100' className='w-full mt-4'>
 						<Image
-							src={image}
+							src={mehar}
 							height='800'
 							width='800'
 							className='h-48 w-full object-cover rounded-xl group-hover/card:shadow-xl'

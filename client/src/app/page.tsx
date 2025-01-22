@@ -27,7 +27,7 @@ export default function Home() {
 					</h1>
 				</div>
 			) : (
-				<div className='flex flex-col items-center text-center mt-20'>
+				<div className='flex flex-col items-center text-center mt-14'>
 					<h1 className='text-4xl font-semibold text-black dark:text-white'>
 						<div className='flex ml-24 justify-left items-center flex-row row-span-2'>
 							<span className='mr-2 text-left flex-shrink-0'>Financial</span>

@@ -11,13 +11,15 @@ export default function Contact() {
 	const deviceType = useDeviceType();
 	return (
 		<>
-			{deviceType === 'desktop' ? (
+			{deviceType !== 'mobile' ? (
 				<BackgroundBeams className='absolute inset-0 z-0' />
 			) : null}
 			<div
 				className={`${
-					deviceType !== 'mobile' ? 'fixed pt-10' : 'relative'
-				} px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md h-screen`}
+					deviceType !== 'mobile'
+						? 'fixed pt-10 h-screen'
+						: 'relative overflow-hidden'
+				} px-2 md:px-10 py-4 w-[calc(100%-4rem)] mx-auto rounded-md`}
 			>
 				<div className='relative z-10 flex flex-col md:flex-row items-center md:items-start text-center md:text-left mt-20 w-full h-full'>
 					<div className='flex-1 mb-8 md:mb-0 md:mr-8'>

@@ -1,13 +1,8 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import {
-	motion,
-	useTransform,
-	useScroll,
-	useVelocity,
-	useSpring
-} from 'framer-motion';
+import { motion, useTransform, useScroll, useSpring } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useDeviceType } from '@/hooks/useDeviceType';
 
 export const TracingBeam = ({
 	children,
@@ -25,6 +20,8 @@ export const TracingBeam = ({
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [svgHeight, setSvgHeight] = useState(0);
 
+	const deviceType = useDeviceType();
+
 	useEffect(() => {
 		if (contentRef.current) {
 			setSvgHeight(contentRef.current.offsetHeight);
@@ -32,7 +29,11 @@ export const TracingBeam = ({
 	}, []);
 
 	const y1 = useSpring(
-		useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
+		useTransform(
+			scrollYProgress,
+			[0, deviceType === 'mobile' ? 0.5 : 0.8],
+			[50, svgHeight]
+		),
 		{
 			stiffness: 500,
 			damping: 90
