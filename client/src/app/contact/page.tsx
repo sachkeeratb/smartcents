@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
@@ -9,6 +9,13 @@ import { useDeviceType } from '@/hooks/useDeviceType';
 
 export default function Contact() {
 	const deviceType = useDeviceType();
+
+	const [width, setWidth] = useState(0);
+
+	useEffect(() => {
+		setWidth(window.innerWidth);
+	}, []);
+
 	return (
 		<>
 			{deviceType !== 'mobile' ? (
@@ -85,9 +92,7 @@ export default function Contact() {
 							</p>
 						</div>
 					</div>
-					{deviceType !== 'desktop' ? (
-						<></>
-					) : (
+					{deviceType === 'desktop' && width >= 1900 ? (
 						<div className='flex-1 mt-[-20rem] md:ml-[-30rem] '>
 							<ContainerScroll
 								titleComponent={
@@ -103,6 +108,8 @@ export default function Contact() {
 								<ImageSlider />
 							</ContainerScroll>
 						</div>
+					) : (
+						<></>
 					)}
 				</div>
 			</div>
